@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Image Source="main_pic.png"
+                   WidthRequest="300"
+                   HeightRequest="300" 
+                   />
+
+            <Label
+                Text="Gissa Ett Tal"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" 
+                />
+
+            <Label 
+                Text="Här kommer innehåll från listan"
+                x:Name="monkeyNameLabel">
+                
+            </Label>
+
+
+            <Picker x:Name="picker"
+                    Title="Välj en svårighetsgrad!">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Svårt</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>Lätt</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            
+            <Entry x:Name="guessEntry"
+                   Placeholder="Skriv din gissning här"
+                   Keyboard="Numeric"
+                   IsEnabled="False" />
+
+            <Button x:Name="startGameButton"
+                    Text="Starta Spelet"
+                    IsEnabled="True"
+                    Clicked="OnStartGameClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
