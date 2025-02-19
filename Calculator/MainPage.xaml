@@ -8,9 +8,9 @@
             Padding="30,0"
             Spacing="25">
 
-            <Image Source="main_pic.png"
-                   WidthRequest="300"
-                   HeightRequest="300" 
+            <Image Source="hello_bye.png"
+                   WidthRequest="200"
+                   HeightRequest="200" 
                    />
 
             <Label
@@ -20,7 +20,7 @@
                 />
 
             <Label 
-                Text="Här kommer innehåll från listan"
+                Text=""
                 x:Name="monkeyNameLabel">
                 
             </Label>
@@ -30,23 +30,28 @@
                     Title="Välj en svårighetsgrad!">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>Svårt</x:String>
-                        <x:String>Medium</x:String>
                         <x:String>Lätt</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>Svårt</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-
+       
             
-            <Entry x:Name="guessEntry"
-                   Placeholder="Skriv din gissning här"
-                   Keyboard="Numeric"
-                   IsEnabled="False" />
-
             <Button x:Name="startGameButton"
-                    Text="Starta Spelet"
-                    IsEnabled="True"
-                    Clicked="OnStartGameClicked" />
+                    Text="Starta"
+                    IsEnabled="False"
+                    Clicked="OnStartGameClicked"
+                   
+                    
+                                    />
+                <Label 
+                x:Name="FeedbackMessage"
+                Text=""
+                Opacity="0"
+                 HorizontalOptions="Center"
+                FontSize="Medium" />
+
 
         </VerticalStackLayout>
     </ScrollView>

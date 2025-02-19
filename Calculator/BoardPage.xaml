@@ -1,13 +1,64 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Calculator.BoardPage"
-             Title="BoardPage">
-    <VerticalStackLayout>
+             Title="Gissa Ett Tal">
+
+    <VerticalStackLayout Padding="20">
         <Label 
-            x:Name="Difficulty"
-            Text="test"
-            VerticalOptions="Center" 
+            x:Name="DifficultyLabel"
+            Text="Vald svårighetsgrad"
+            FontSize="Small"
             HorizontalOptions="Center" />
+
+        <Label x:Name="selectedIndex"
+               Text="Gissa från"
+               
+               
+               />
+
+        <Label 
+            x:Name="AttemptsLabel"
+            Text="Antal försök: 0"
+            FontSize="Medium"
+            HorizontalOptions="Center" />
+
+        <Label 
+            x:Name="ScoreLabel"
+            Text="Poäng: 0"
+            FontSize="Medium"
+            HorizontalOptions="Center" />
+
+        <Label 
+            x:Name="FeedbackMessage"
+            Text=""
+            Opacity="0"
+            HorizontalOptions="Center"
+            FontSize="Medium" />
+
+        <Frame 
+            x:Name="FeedbackIndicator"
+            WidthRequest="50"
+            HeightRequest="50"
+            CornerRadius="25"
+            IsVisible="False"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+
+        <Entry 
+            x:Name="guessEntry"
+            Placeholder="Skriv din gissning här"
+            Keyboard="Numeric" />
+
+        <Button 
+            x:Name="submitGuessButton"
+            Text="Skicka Gissning"
+            Clicked="OnSubmitGuessClicked" />
+
+        <Button 
+            x:Name="playAgainButton"
+            Text="Spela igen"
+            IsEnabled="False"
+            Clicked="OnPlayAgainClicked" />
     </VerticalStackLayout>
+
 </ContentPage>

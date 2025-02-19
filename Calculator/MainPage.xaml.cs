@@ -2,33 +2,14 @@
 {
     public partial class MainPage : ContentPage
     {
-        int selectedIndex = 0;
+        int selectedIndex = -1;
 
         public MainPage()
         {
             InitializeComponent();
-            CreatePickerList();
             picker.SelectedIndexChanged += OnPickerSelectedIndexChanged;
         }
 
-        private async void OnStartGameClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new BoardPage(selectedIndex));
-        }
-
-        private void CreatePickerList()
-        {
-            var difficulty = new List<string>();
-            difficulty.Add("Svårt");
-            difficulty.Add("Medium");
-            difficulty.Add("Lätt");
-
-            Picker picker = new Picker { Title = "välja svårighetsgrad" };
-            picker.ItemsSource = difficulty;
-
-            picker.SelectedIndexChanged += OnPickerSelectedIndexChanged;
-
-        }
         private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
@@ -37,12 +18,36 @@
             if (selectedIndex != -1)
             {
                 monkeyNameLabel.Text = (string)picker.ItemsSource[selectedIndex];
+                startGameButton.IsEnabled = true;
+
+               
+
+
+                FeedbackMessage.Opacity = 0;
             }
             else
             {
                 monkeyNameLabel.Text = "Välj en svårighetsgrad";
+                startGameButton.IsEnabled = false;
             }
         }
-    }
 
+
+        private async void OnStartGameClicked(object sender, EventArgs e)
+        {
+            if (selectedIndex != -1)
+            {
+                string selectedDifficulty = (string)picker.ItemsSource[selectedIndex];
+                await Navigation.PushAsync(new BoardPage(selectedDifficulty));
+            }
+            else
+            {
+                FeedbackMessage.Text = "Vänligen välj en svårighetsgrad!";
+                FeedbackMessage.Opacity = 1;
+
+                await DisplayAlert("Info", "Välj en svårighetsgrad först!", "OK");
+            }
+        }
+
+    }
 }
